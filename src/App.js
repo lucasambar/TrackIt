@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import GlobalStyle from "./constantes/GlobalStyle";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-function App() {
+import PageInicial from "./pagina inicial/PageInicial";
+import PageCadastro from "./pagina cadastro/PageCadastro";
+
+
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <GlobalStyle/>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<PageInicial/>}/>
+          <Route path="/cadastro" element={<PageCadastro/>}/>
+        </Routes>
+      </BrowserRouter>
+      
+    </>
   );
 }
 
-export default App;
+ 
