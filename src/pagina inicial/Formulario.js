@@ -1,5 +1,6 @@
 import axios from "axios"
 import { useContext, useState} from "react"
+import { useNavigate } from "react-router-dom"
 import styled from "styled-components"
 
 import CORES from "../constantes/Cores.js"
@@ -12,9 +13,9 @@ export default function Formulario () {
     const [senha,setSenha] = useState("")
     const [desabilitado, setDesabilitado] = useState(false)
 
-    const {login, setLogin} = useContext(MyContext)
+    const {setLogin} = useContext(MyContext)
 
-    console.log(login)
+    const navigate = useNavigate() 
   
 
     function Logar (event) {
@@ -27,8 +28,8 @@ export default function Formulario () {
         }
 
         let promessa = axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/login", obj)
-        promessa.then(resposta => console.log(resposta.data))
-        promessa.catch(erro => console.log(erro.response.data))
+        promessa.then(resposta => {setLogin(resposta.data); navigate("/hoje")})
+        promessa.catch(erro => alert(erro.response.data))
     }
 
     return (

@@ -1,12 +1,14 @@
+import { useContext } from "react"
 import styled from "styled-components"
 import CORES from "../constantes/Cores"
+import MyContext from "../provedores/Context"
 
 export default function Header () {
+    const {login} = useContext(MyContext)
     return (
         <Background>
                 <Texto>Trackit</Texto>
-                <Icon src="https://img.elo7.com.br/product/zoom/3EECB71/desenho-personalizado-para-usar-de-foto-de-perfil-e-etc-personalizado.jpg" alt="perfil"/>
-        {/* link virá da API, alterar depois */}
+                <Icon src={login.image} alt="perfil"/>
         </Background>
     )
 }

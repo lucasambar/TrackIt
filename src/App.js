@@ -12,10 +12,11 @@ import MyContext from "./provedores/Context";
 
 export default function App() {
   const [login,setLogin] = useState({name: "oi"})
+  const [progresso, setProgresso] = useState(50)
 
   return (
     <>
-      <MyContext.Provider value={{login, setLogin}}>
+      <MyContext.Provider value={{login, setLogin, progresso, setProgresso}}>
         <GlobalStyle/>
           <BrowserRouter>
             <Routes>

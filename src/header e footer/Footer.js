@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import styled from "styled-components"
 import CORES from "../constantes/Cores"
 import Hoje from "./HojeButton"
@@ -5,9 +6,17 @@ import Hoje from "./HojeButton"
 export default function Footer () {
     return (
         <Background>
-            <Texto>Hábitos</Texto>
-            <Hoje/>
-            <Texto>Histórico</Texto>
+            <Link to="/habitos" className="link">
+                <Texto>Hábitos</Texto>
+            </Link>
+
+            <Link to="/hoje" className="link">
+                <Hoje/>
+            </Link>
+            
+            <Link to="/historico" className="link">
+                <Texto>Histórico</Texto>
+            </Link>
         </Background>
     )
 }
@@ -25,6 +34,10 @@ const Background = styled.div`
     position: fixed;
     bottom: 0;
     right: 0;
+
+    .link{
+        text-decoration: none;
+    }
 `
 
 const Texto = styled.div`
