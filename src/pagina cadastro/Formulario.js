@@ -1,15 +1,15 @@
 import axios from "axios"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import styled from "styled-components"
 
 import CORES from "../constantes/Cores.js"
-import loading from "../imagens/loading.png"
+import Load from "../provedores/Loading.js"
 
 export default function Formulario () {
     const navigate = useNavigate()
 
-    const [habilitado, setHabilitado] = useState(false)
+    const [desabilitado, setDesabilitado] = useState(false)
     const [dados, setDados] = useState({
         email: "",
         name: "",
@@ -20,33 +20,32 @@ export default function Formulario () {
     function Cadastrar (event) {
         event.preventDefault()
 
-        setHabilitado(true)
+        setDesabilitado(true)
 
-        useEffect(() => {
-            const promessa = axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/sign-up", dados)
+        const promessa = axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/sign-up", dados)
 
-            promessa.then(navigate("/"))
-            promessa.catch(console.log("fudeu"))
-        }, [])
+        promessa.then((response) => {navigate("/");console.log(response.data)})
+        promessa.catch(erro => alert(erro.response.data))
+
     }
 
     return (
 
         <Form onSubmit={Cadastrar}>
-            <Input type="email" placeholder="email" id="email" disabled={habilitado} habilitado={habilitado}
+            <Input type="email" placeholder="email" id="email" disabled={desabilitado} desabilitado={desabilitado}
             onChange={(e)=> setDados({...dados, email: e.target.value})} value={dados.email}/>
 
-            <Input type="password" placeholder="senha" id="password" disabled={habilitado} habilitado={habilitado}
+            <Input type="password" placeholder="senha" id="password" disabled={desabilitado} desabilitado={desabilitado}
             onChange={(e)=> setDados({...dados, password: e.target.value})} value={dados.password}/>
 
-            <Input type="text" placeholder="nome" id="nome" disabled={habilitado} habilitado={habilitado}
+            <Input type="text" placeholder="nome" id="nome" disabled={desabilitado} desabilitado={desabilitado}
             onChange={(e)=> setDados({...dados, name: e.target.value})} value={dados.name}/>
 
-            <Input type="url" placeholder="foto" id="foto" disabled={habilitado} habilitado={habilitado}
+            <Input type="url" placeholder="foto" id="foto" disabled={desabilitado} desabilitado={desabilitado}
             onChange={(e)=> setDados({...dados, image: e.target.value})} value={dados.image}/>
 
-            <Button type="submit" disabled={habilitado} habilitado={habilitado}> 
-                {habilitado ? <img src={loading} alt=""/> : "Carregando"}
+            <Button type="submit" disabled={desabilitado} desabilitado={desabilitado}> 
+                {desabilitado ? <Load/> : "Cadastrar"}
             </Button>
         </Form>
     )
@@ -66,7 +65,7 @@ const Input =styled.input`
     width: 303px;
     border-radius: 5px;
     border: 1px solid ${CORES.bordas};
-    background-color: ${props => props.habilitado  ? CORES.background : CORES.branco};
+    background-color: ${props => props.desabilitado  ? CORES.background : CORES.branco};
 
     font-family: Lexend Deca;
     font-size: 20px;
@@ -98,9 +97,12 @@ const Button = styled.button`
     border-radius: 4.636363506317139px;
     border: none;
     background-color: ${CORES.botoes};
-    opacity: ${props => props.habilitado ? "0.7" : "1"};
-    
+    opacity: ${props => props.desabilitado ? "0.7" : "1"};
 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
     font-family: Lexend Deca;
     font-size: 21px;
     font-weight: 400;
