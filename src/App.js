@@ -7,12 +7,13 @@ import PageInicial from "./pagina inicial/PageInicial";
 import PageCadastro from "./pagina cadastro/PageCadastro";
 import PageHoje from "./pagina hoje/PageHoje";
 import MyContext from "./provedores/Context";
+import PageHistorico from "./TelaHistorico";
 
 
 
 export default function App() {
-  const [login,setLogin] = useState({name: "oi"})
-  const [progresso, setProgresso] = useState(50)
+  const [login,setLogin] = useState({})
+  const [progresso, setProgresso] = useState(0)
 
   return (
     <>
@@ -23,6 +24,7 @@ export default function App() {
               <Route path="/" element={<PageInicial/>}/>
               <Route path="/cadastro" element={<PageCadastro/>}/>
               <Route path="/hoje" element={<PageHoje/>}/>
+              <Route path="/historico" element={<PageHistorico/>}/>
             </Routes>
           </BrowserRouter>
         </MyContext.Provider>

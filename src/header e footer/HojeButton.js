@@ -15,10 +15,10 @@ export default function Hoje () {
                 value={progresso} 
                 text={"Hoje"} 
                 styles={buildStyles({
-                    text: {
-                        fill: '#FFFFFF'
-                    }
-            })}/>
+                    textSize: "25px",
+                    textColor: "#FFF",
+            }
+            )}/>
         </Button>
     )
 }

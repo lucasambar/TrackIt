@@ -21,7 +21,8 @@ export default function PageHoje () {
 
 const Background = styled.div`
     width: 100%;
-    height: 1000px;
+    height: calc(100vh - 140px); 
+
     background-color: ${CORES.background};
 
     margin-top: 70px;
