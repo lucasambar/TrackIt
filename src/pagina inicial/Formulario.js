@@ -1,18 +1,24 @@
 import axios from "axios"
-import { useState } from "react"
+import { useContext, useState} from "react"
 import styled from "styled-components"
 
 import CORES from "../constantes/Cores.js"
+import MyContext from "../provedores/Context.js"
 import Load from "../provedores/Loading.js"
+
 
 export default function Formulario () {
     const [email, setEmail] = useState("")
     const [senha,setSenha] = useState("")
     const [desabilitado, setDesabilitado] = useState(false)
 
+    const {login, setLogin} = useContext(MyContext)
+
+    console.log(login)
+  
+
     function Logar (event) {
         event.preventDefault()
-        
         setDesabilitado(true)
 
         let obj = {

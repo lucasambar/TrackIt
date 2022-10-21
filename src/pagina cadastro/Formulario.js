@@ -25,7 +25,7 @@ export default function Formulario () {
         const promessa = axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/sign-up", dados)
 
         promessa.then((response) => {navigate("/");console.log(response.data)})
-        promessa.catch(erro => alert(erro.response.data))
+        promessa.catch(erro => {alert(erro.response.data); setDesabilitado(false)})
 
     }
 
