@@ -3,15 +3,15 @@ import styled from "styled-components";
 import CORES from "../constantes/Cores";
 import Footer from "../header e footer/Footer";
 import Header from "../header e footer/Header";
-
-
+import Textos from "./Textos";
 
 export default function PageHoje () {
+
     return (
         <>
             <Header/>
             <Background>
-
+                <Textos/>
             </Background>
             <Footer/>
         </>
@@ -23,4 +23,9 @@ const Background = styled.div`
     width: 100%;
     height: 1000px;
     background-color: ${CORES.background};
+
+    margin-top: 70px;
+    margin-bottom: 70px;
+
+    padding-top: 29px;
 `
