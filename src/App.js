@@ -8,6 +8,7 @@ import PageCadastro from "./pagina cadastro/PageCadastro";
 import PageHoje from "./pagina hoje/PageHoje";
 import MyContext from "./provedores/Context";
 import PageHistorico from "./pagina historico/TelaHistorico";
+import PageHabitos from "./pagina habitos/PageHabitos";
 
 
 
@@ -15,10 +16,16 @@ export default function App() {
   const [login,setLogin] = useState({})
   const [progresso, setProgresso] = useState(0)
   const [cardsHoje, setCardsHoje] = useState({})
+  const [novo, setNovo] = useState(false)
+  const [cardsHabitos, setCardsHabitos] = useState(undefined)
 
   return (
     <>
-      <MyContext.Provider value={{login, setLogin, progresso, setProgresso, cardsHoje, setCardsHoje}}>
+      <MyContext.Provider value={{login, setLogin, 
+            progresso, setProgresso, 
+            cardsHoje, setCardsHoje,
+            cardsHabitos, setCardsHabitos, 
+            novo, setNovo}}>
         <GlobalStyle/>
           <BrowserRouter>
             <Routes>
@@ -26,6 +33,7 @@ export default function App() {
               <Route path="/cadastro" element={<PageCadastro/>}/>
               <Route path="/hoje" element={<PageHoje/>}/>
               <Route path="/historico" element={<PageHistorico/>}/>
+              <Route path="/habitos" element={<PageHabitos/>}/>
             </Routes>
           </BrowserRouter>
         </MyContext.Provider>
