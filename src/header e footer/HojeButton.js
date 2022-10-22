@@ -13,12 +13,13 @@ export default function Hoje () {
         <Button>
             <CircularProgressbarWithChildren
                 value={progresso} 
-                text={"Hoje"} 
                 styles={buildStyles({
-                    textSize: "25px",
-                    textColor: "#FFF",
+                    pathColor: CORES.branco,
+                    trailColor: CORES.botoes,
             }
-            )}/>
+            )}>
+                <Texto>Hoje</Texto>
+            </CircularProgressbarWithChildren>
         </Button>
     )
 }
@@ -38,8 +39,8 @@ const Button = styled.div`
     z-index: 2;
 
     padding: 5px 5px;
-
-    .circulo{
+`
+const Texto = styled.p`
         font-family: Lexend Deca;
         font-size: 18px;
         font-weight: 400;
@@ -47,5 +48,4 @@ const Button = styled.div`
         letter-spacing: 0em;
         text-align: left;
         color: ${CORES.branco};
-    }
 `

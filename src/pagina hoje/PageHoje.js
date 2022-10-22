@@ -3,6 +3,8 @@ import styled from "styled-components";
 import CORES from "../constantes/Cores";
 import Footer from "../header e footer/Footer";
 import Header from "../header e footer/Header";
+import Cards from "./Cards";
+import ContainerCards from "./ContainerCards";
 import Textos from "./Textos";
 
 export default function PageHoje () {
@@ -12,6 +14,8 @@ export default function PageHoje () {
             <Header/>
             <Background>
                 <Textos/>
+                <ContainerCards/>
+                <Cards/>
             </Background>
             <Footer/>
         </>

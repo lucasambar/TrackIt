@@ -1,8 +1,8 @@
 import styled from "styled-components"
 
-import CORES from "./constantes/Cores"
-import Footer from "./header e footer/Footer"
-import Header from "./header e footer/Header"
+import CORES from "../constantes/Cores"
+import Footer from "../header e footer/Footer"
+import Header from "../header e footer/Header"
 
 export default function PageHistorico () {
     return (

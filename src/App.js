@@ -7,17 +7,18 @@ import PageInicial from "./pagina inicial/PageInicial";
 import PageCadastro from "./pagina cadastro/PageCadastro";
 import PageHoje from "./pagina hoje/PageHoje";
 import MyContext from "./provedores/Context";
-import PageHistorico from "./TelaHistorico";
+import PageHistorico from "./pagina historico/TelaHistorico";
 
 
 
 export default function App() {
   const [login,setLogin] = useState({})
   const [progresso, setProgresso] = useState(0)
+  const [cardsHoje, setCardsHoje] = useState({})
 
   return (
     <>
-      <MyContext.Provider value={{login, setLogin, progresso, setProgresso}}>
+      <MyContext.Provider value={{login, setLogin, progresso, setProgresso, cardsHoje, setCardsHoje}}>
         <GlobalStyle/>
           <BrowserRouter>
             <Routes>
