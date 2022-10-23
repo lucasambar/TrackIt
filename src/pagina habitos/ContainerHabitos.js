@@ -6,8 +6,9 @@ import MyContext from "../provedores/Context"
 import CardHabito from "./CardHabito"
 
 export default function ContainerHabitos () {
-    const {login} = useContext(MyContext)
-    const [cards, setCards] = useState(undefined)
+    const {login, alteracoes} = useContext(MyContext)
+    const [cards, setCards] = useState({})
+
 
     useEffect(() => {
         const config = {
@@ -21,9 +22,11 @@ export default function ContainerHabitos () {
         promessa.catch(erro => console.log(erro.response.data))
     }, [login])
 
+    console.log(cards)
+
     return (
         <>
-            {!cards ? <Texto>Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para começar a trackear!</Texto>
+            {(cards.length === 0) ? <Texto>Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para começar a trackear!</Texto>
             : <Container>
                 {cards.map(infos => <CardHabito infos={infos} key={infos.id}/>)}
             </Container>}

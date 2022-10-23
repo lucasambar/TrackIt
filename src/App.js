@@ -17,14 +17,15 @@ export default function App() {
   const [progresso, setProgresso] = useState(0)
   const [cardsHoje, setCardsHoje] = useState({})
   const [novo, setNovo] = useState(false)
-
+  const [alteracoes, setAlteracoes] = useState(0)
 
   return (
     <>
       <MyContext.Provider value={{login, setLogin, 
             progresso, setProgresso, 
             cardsHoje, setCardsHoje,
-            novo, setNovo}}>
+            novo, setNovo,
+            alteracoes, setAlteracoes}}>
         <GlobalStyle/>
           <BrowserRouter>
             <Routes>

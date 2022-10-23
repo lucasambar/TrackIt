@@ -1,13 +1,35 @@
+import axios from "axios"
+import { useContext } from "react"
 import { TrashOutline } from "react-ionicons"
 import styled from "styled-components"
 import CORES from "../constantes/Cores"
+import MyContext from "../provedores/Context"
 
 export default function CardHabito ({infos}) {
+    const {login, setAlteracoes, alteracoes} = useContext(MyContext)
+    
+    function deletar(id) {
+        let mensagem = `Você tem certeza que deseja excluir "${infos.name}" dos seus hábitos?`
+        if (window.confirm(mensagem)) {
+            // const config = {
+            //     headers: {
+            //         "Authorization": `Bearer ${login.token}`
+            //     }
+            // } 
+
+            // let url = `https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/${id}`
+
+            // axios.delete(url,config)
+            // setAlteracoes(alteracoes + 1)
+            console.log('funciona')
+        }
+    }
+    
     return (
         <Card>
             <Topo>
                 <Texto>{infos.name}</Texto>
-                <TrashOutline color={CORES.textos} height="17px" width="17px"/>
+                <TrashOutline color={CORES.textos} height="17px" width="17px" onClick={() => deletar(infos.id)}/>
             </Topo>
 
             <Dias>
