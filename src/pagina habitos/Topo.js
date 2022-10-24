@@ -4,7 +4,7 @@ import CORES from "../constantes/Cores"
 import MyContext from "../provedores/Context"
 import NovoCard from "./NovoCard"
 
-export default function Topo () {
+export default function Topo ({atualizaHabitos}) {
     const {novo, setNovo} = useContext(MyContext)
 
     return (
@@ -13,7 +13,7 @@ export default function Topo () {
                 <Titulo>Meus hábitos</Titulo>
                 <Button onClick={()=>!novo ? setNovo(true) : setNovo(false)}>+</Button>
             </Container>
-            {novo? <NovoCard/> : <p></p>}
+            {novo? <NovoCard atualizaHabitos={atualizaHabitos}/> : <p></p>}
         </>
     )
 }

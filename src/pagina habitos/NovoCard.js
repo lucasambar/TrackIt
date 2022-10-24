@@ -9,7 +9,7 @@ export default function NovoCard () {
     const [nome, setNome] = useState("")
     const [selecionados, setSelecionados] = useState([])
     const [desabilitado, setDesabilitado] = useState(false)
-    const {setNovo, login, alteracoes, setAlteracoes} = useContext(MyContext)
+    const {setNovo, login} = useContext(MyContext)
     
     function enviar () {
         let obj = {
@@ -25,7 +25,7 @@ export default function NovoCard () {
         setDesabilitado(true) 
 
         let promessa = axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits", obj, config)
-        promessa.then(()=>{setNovo(false);setAlteracoes(alteracoes + 1)})
+        promessa.then(()=>{setNovo(false);})
         promessa.catch(erro => console.log(erro.response.data.message))
     }
 

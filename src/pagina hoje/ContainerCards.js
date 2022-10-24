@@ -1,6 +1,8 @@
 import axios from "axios"
 import { useContext, useEffect } from "react"
+import styled from "styled-components"
 import MyContext from "../provedores/Context"
+import Cards from "./Cards"
 
 export default function ContainerCards () {
     const {login, setCardsHoje, cardsHoje} = useContext(MyContext)
@@ -18,6 +20,10 @@ export default function ContainerCards () {
     }, [login.token, setCardsHoje]) 
     
     return (
-        <p>Nenhum hábito cadastrado ainda</p>
+        <Container>
+            {cardsHoje.map((infos) => <Cards infos={infos} key={infos.id}/>)}
+        </Container>
     )
 }
+
+const Container = styled.div``

@@ -1,28 +1,13 @@
-import axios from "axios"
-import { useContext, useEffect, useState } from "react"
+import { useContext, useEffect } from "react"
 import styled from "styled-components"
 import CORES from "../constantes/Cores"
 import MyContext from "../provedores/Context"
 import CardHabito from "./CardHabito"
 
-export default function ContainerHabitos () {
-    const {login, alteracoes} = useContext(MyContext)
-    const [cards, setCards] = useState({})
-
-
-    useEffect(() => {
-        const config = {
-            headers: {
-                "Authorization": `Bearer ${login.token}`
-            }
-        } 
-
-        let promessa = axios.get("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits", config)
-        promessa.then(response => setCards(response.data))
-        promessa.catch(erro => console.log(erro.response.data))
-    }, [login])
-
-    console.log(cards)
+export default function ContainerHabitos ({atualizaHabitos}) {
+    const { cards} = useContext(MyContext)
+    
+    useEffect(()=>atualizaHabitos(),[atualizaHabitos])
 
     return (
         <>
