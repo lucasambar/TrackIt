@@ -6,8 +6,8 @@ import Load from "../provedores/Loading"
 import Cards from "./Cards"
 
 export default function ContainerCards () {
-    const {login, setCardsHoje, cardsHoje} = useContext(MyContext)
-    const {numHabitosHoje, setNumHabitosHoje} = useContext(MyContext)
+    // const {login, setCardsHoje, cardsHoje} = useContext(MyContext)
+    // const {numHabitosHoje, setNumHabitosHoje} = useContext(MyContext)
 
     // useEffect(() => {
     //     const config = {
@@ -21,11 +21,12 @@ export default function ContainerCards () {
     //     promessa.catch(erro => console.log(erro.response.data))
     // }, [login.token, setCardsHoje]) 
 
-    cardsHoje.forEach(() => setNumHabitosHoje(numHabitosHoje + 1))
+    // cardsHoje.forEach(() => setNumHabitosHoje(numHabitosHoje + 1))
     
     return (
         <Container>
-            {(cardsHoje.length === 0) ? <Load/> : cardsHoje.map((infos) => <Cards infos={infos} key={infos.id}/>)} 
+            {/* {(cardsHoje.length === 0) ? <Load/> : cardsHoje.map((infos) => <Cards infos={infos} key={infos.id}/>)}  */}
+            <p>Não tive tempo de corrigir erros nesse parte do projeto.</p>
         </Container>
     )
 }
@@ -33,5 +34,4 @@ export default function ContainerCards () {
 const Container = styled.div`
     display: flex;
     align-items: center;
-    padding-top: 27px;
 `
