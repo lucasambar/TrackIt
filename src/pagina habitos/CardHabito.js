@@ -6,21 +6,20 @@ import CORES from "../constantes/Cores"
 import MyContext from "../provedores/Context"
 
 export default function CardHabito ({infos}) {
-    const {login, setAlteracoes, alteracoes} = useContext(MyContext)
+    const {login} = useContext(MyContext)
     
     function deletar(id) {
         let mensagem = `Você tem certeza que deseja excluir "${infos.name}" dos seus hábitos?`
         if (window.confirm(mensagem)) {
-            // const config = {
-            //     headers: {
-            //         "Authorization": `Bearer ${login.token}`
-            //     }
-            // } 
+            const config = {
+                headers: {
+                    "Authorization": `Bearer ${login.token}`
+                }
+            } 
 
-            // let url = `https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/${id}`
+            let url = `https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/${id}`
 
-            // axios.delete(url,config)
-            // setAlteracoes(alteracoes + 1)
+            axios.delete(url,config)
             console.log('funciona')
         }
     }

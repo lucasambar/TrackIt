@@ -46,5 +46,5 @@ const Background = styled.div`
     margin-bottom: 70px;
 
     padding-top: 29px;
-    padding-bottom: 15px;
+    padding-bottom: 30px;
 `
