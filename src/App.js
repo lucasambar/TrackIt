@@ -14,8 +14,12 @@ import PageHabitos from "./pagina habitos/PageHabitos";
 
 export default function App() {
   const [login,setLogin] = useState({})
+
   const [progresso, setProgresso] = useState(0)
   const [cardsHoje, setCardsHoje] = useState([])
+
+  const [numHabitosHoje, setNumHabitosHoje] = useState(0)
+  const [numFeitos, setNumFeitos] = useState(0)
   const [novo, setNovo] = useState(false)
   const [alteracoes, setAlteracoes] = useState(0)
   const [cards, setCards] = useState([])
@@ -27,7 +31,9 @@ export default function App() {
             cardsHoje, setCardsHoje,
             novo, setNovo,
             alteracoes, setAlteracoes,
-            cards, setCards}}>
+            cards, setCards,
+            numHabitosHoje, setNumHabitosHoje,
+            numFeitos, setNumFeitos}}>
         <GlobalStyle/>
           <BrowserRouter>
             <Routes>

@@ -1,16 +1,41 @@
+import { useContext, useState } from "react"
 import { Checkbox } from "react-ionicons"
 import styled from "styled-components"
 import CORES from "../constantes/Cores"
+import MyContext from "../provedores/Context"
 
-export default function Cards () {
+export default function Cards ({infos}) {
+    const [feito, setFeito] = useState(infos.done)
+    const [sequencia, setSequencia] = useState(infos.currentSequence)
+    const [recorde, setRecorde] = useState(infos.highestSequence)
+
+    const {numFeitos, setNumFeitos} = useContext(MyContext)
+
+    const [batido, setBatido] = useState(false)
+
+    function bateu () {
+        if (numFeitos === recorde) {setBatido(true)}
+    }
+    bateu()
+
+    function click () {
+        if (!feito) {
+            setFeito(true)
+            setSequencia(sequencia+1)
+            setNumFeitos(numFeitos + 1)
+            bateu()
+        }
+    }
+
     return (
         <Card>
             <div>
-                <Titulo>Hábito 1</Titulo>
-                <Texto>Sequência atual: <span> dias</span></Texto>
-                <Texto>Seu recorde: <span> dias</span></Texto>
+                <Titulo>{infos.name}</Titulo>
+                <Texto batido={batido}>Sequência atual: <span> {sequencia} dias</span></Texto>
+                <Texto batido={batido}>Seu recorde: <span> {recorde} dias</span></Texto>
             </div>
-            <Checkbox color={CORES.bordas} height="69px" width="69px"/>
+            <Checkbox color={feito ? CORES.acerto : CORES.bordas} height="69px" width="69px"
+            onClick={click}/>
         </Card>
     )
 }
@@ -50,4 +75,8 @@ const Texto = styled.p`
     letter-spacing: 0em;
     text-align: left;
     color: ${CORES.textos};
+
+    span{
+        color: ${props => props.batido ? CORES.acerto : CORES.textos};
+    }
 `
